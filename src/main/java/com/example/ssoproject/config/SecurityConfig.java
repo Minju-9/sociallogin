@@ -33,7 +33,7 @@ public class SecurityConfig {
                         .successHandler(adminPageHandler)
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                        .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 );
 
         return http.build();
