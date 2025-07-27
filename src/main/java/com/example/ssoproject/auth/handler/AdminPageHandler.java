@@ -12,11 +12,19 @@ import java.io.IOException;
 @Component
 public class AdminPageHandler implements AuthenticationSuccessHandler {
 
+    private static final String LOCAL_URL = "http://localhost:5173/dashboard";
+    private static final String PROD_URL = "https://sociallogin-fe.vercel.app/dashboard"; // ✅ 배포 프론트엔드 URL
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
-        // 로그인 성공 후 관리자 페이지로 리디렉션
-        response.sendRedirect("http://localhost:5173/dashboard");
+        String referer = request.getHeader("referer");
+
+        if (referer != null && referer.contains("sociallogin-fe.vercel.app")) {
+            response.sendRedirect(PROD_URL);
+        } else {
+            response.sendRedirect(LOCAL_URL);
+        }
     }
 }

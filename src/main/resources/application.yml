@@ -20,7 +20,7 @@ spring:
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
-            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+            redirect-uri: "https://sociallogin-tyc7.onrender.com/login/oauth2/code/google"
             authorization-grant-type: authorization_code
             scope:
               - email
@@ -29,7 +29,7 @@ spring:
           naver:
             client-id: ${NAVER_CLIENT_ID}
             client-secret: ${NAVER_CLIENT_SECRET}
-            redirect-uri: "{baseUrl}/login/oauth2/code/naver"
+            redirect-uri: "https://sociallogin-tyc7.onrender.com/login/oauth2/code/naver"
             authorization-grant-type: authorization_code
             scope:
               - name
@@ -37,8 +37,8 @@ spring:
 
           kakao:
             client-id: ${KAKAO_CLIENT_ID}
-            client-secret: ""
-            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
+            client-secret: "" # 카카오는 secret 없음
+            redirect-uri: "https://sociallogin-tyc7.onrender.com/login/oauth2/code/kakao"
             authorization-grant-type: authorization_code
             scope:
               - profile_nickname
@@ -46,7 +46,7 @@ spring:
           facebook:
             client-id: ${FACEBOOK_CLIENT_ID}
             client-secret: ${FACEBOOK_CLIENT_SECRET}
-            redirect-uri: "{baseUrl}/login/oauth2/code/facebook"
+            redirect-uri: "https://sociallogin-tyc7.onrender.com/login/oauth2/code/facebook"
             scope:
               - email
               - public_profile

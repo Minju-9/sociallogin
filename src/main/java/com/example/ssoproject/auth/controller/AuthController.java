@@ -29,9 +29,8 @@ public class AuthController {
         }
 
         // ✅ Spring Security가 관리하는 provider 이름 가져오기
-        String provider = authentication.getAuthorizedClientRegistrationId(); // google/naver/kakao
+        String provider = authentication.getAuthorizedClientRegistrationId(); // google/naver/kakao/facebook
 
-        // ✅ socialId 추출
         String socialId = null;
         if (provider.equals("google")) {
             socialId = (String) oAuth2User.getAttributes().get("sub");
@@ -40,6 +39,8 @@ public class AuthController {
             socialId = (String) naverRes.get("id");
         } else if (provider.equals("kakao")) {
             socialId = String.valueOf(oAuth2User.getAttributes().get("id"));
+        } else if (provider.equals("facebook")) {
+            socialId = (String) oAuth2User.getAttributes().get("id");
         }
 
         // ✅ DB 조회 후 응답
