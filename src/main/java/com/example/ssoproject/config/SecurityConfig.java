@@ -46,6 +46,7 @@ public class SecurityConfig {
                 registry.addMapping("/**")
                         .allowedOrigins("https://sociallogin-fe.vercel.app")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
                         .allowCredentials(true);
             }
         };
