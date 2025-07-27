@@ -26,18 +26,17 @@ public class AuthService extends DefaultOAuth2UserService {
         String name = getName(oAuth2User, provider);
         String email = getEmail(oAuth2User, provider);
 
-        // ✅ 기존 유저 확인 후 없으면 신규 저장
+        // ✅ 기존 유저 확인 후 없으면 신규 저장 (업데이트 X)
         userRepository.findBySocialIdAndProvider(socialId, provider)
                 .orElseGet(() -> userRepository.save(
                         User.builder()
                                 .socialId(socialId)
                                 .provider(provider)
                                 .name(name != null ? name : "Unknown")
-                                .email(email != null ? email : null) // ✅ null 허용
+                                .email(email != null ? email : null)
                                 .createdAt(LocalDateTime.now())
                                 .build()
                 ));
-
 
         return oAuth2User;
     }

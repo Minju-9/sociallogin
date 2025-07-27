@@ -17,6 +17,6 @@ public class AdminPageHandler implements AuthenticationSuccessHandler {
                                         HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
         // 로그인 성공 후 관리자 페이지로 리디렉션
-        response.sendRedirect("/admin/users");
+        response.sendRedirect("http://localhost:5173/dashboard");
     }
 }
